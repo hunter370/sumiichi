@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  scope module: :user do
+    root to: "homes#top"
+    get '/about' => 'homes#about', as: 'about'
+  end
+  namespace :admin do
+    root to: "homes#top"
+  end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
   passwords:     'admins/passwords',
