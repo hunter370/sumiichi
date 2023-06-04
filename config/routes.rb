@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     root to: "homes#top"
-    resources :tournaments, only: [:new, :create, :index, :edit, :update]
+    resources :tournaments, only: [:new, :create, :index, :edit, :update, :show]
+    resources :teams, only: [:create, :index, :show, :edit, :update]
   end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',

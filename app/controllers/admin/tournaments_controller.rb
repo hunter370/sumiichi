@@ -23,6 +23,10 @@ class Admin::TournamentsController < ApplicationController
     redirect_to admin_tournaments_path
   end
   
+  def show
+    @tournament = Tournament.find(params[:id])
+  end
+  
   private
   def tournament_params
     params.require(:tournament).permit(:tytle, :short_tytle)

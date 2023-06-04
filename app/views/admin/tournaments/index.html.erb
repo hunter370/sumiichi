@@ -10,6 +10,7 @@
     <td><%= tournament.tytle %></td>
     <td><%= tournament.short_tytle %></td>
     <td><%= link_to "編集する", edit_admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
+    <td><%= link_to "詳細へ", admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
   </tr>
  <% end %>
 </table>

@@ -1,0 +1,38 @@
+<h1>チーム登録・一覧画面</h1>
+
+<!--チーム登録-->
+<%= form_with model: @team, url: admin_teams_path do |f| %>
+
+<h4>高校名</h4>
+<%= f.text_field :team_name %>
+
+<h4>都道府県名</h4>
+<%= f.text_field :prefecture %>
+
+<h4>出場回数</h4>
+<%= f.text_field :number %>
+
+<h4>最高成績</h4>
+<%= f.text_field :grade %>
+
+<%= f.submit '登録する', class: "btn btn-success" %>
+
+<% end %>
+
+<!--チーム一覧-->
+<table border="1" style="border-collapse: collapse">
+  <tr>
+    <th>高校名</th>
+    <th>都道府県名</th>
+    <th>出場回数</th>
+    <th>最高成績</th>
+  </tr>
+ <% @teams.each do |teams| %>
+  <tr>
+    <td><%= teams.team_name %></td>
+    <td><%= teams.prefecture %></td>
+    <td><%= teams.number %></td>
+    <td><%= teams.grade %></td>
+  </tr>
+ <% end %>
+</table>
