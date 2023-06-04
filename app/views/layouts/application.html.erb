@@ -14,22 +14,28 @@
     <header>
      <% if user_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
       </li>
      <% elsif admin_signed_in? %>
       <li>
-       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+      </li>
+      <li>
+        <%= link_to "大会登録", new_admin_tournament_path, class: "btn btn-outline-secondary" %>
+      </li>
+      <li>
+        <%= link_to "大会一覧", admin_tournaments_path, class: "btn btn-outline-secondary" %>
       </li>
      <% else %>
       <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
       </li>
       <li>
-        <%= link_to "userログイン", new_user_session_path %>
+        <%= link_to "userログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
       </li>
       <!--adminログインは最後に消す-->
       <li>
-        <%= link_to "adminログイン", new_admin_session_path %>
+        <%= link_to "adminログイン", new_admin_session_path, class: "btn btn-outline-secondary" %>
       </li>
      <% end %>
     </header>
