@@ -1,0 +1,13 @@
+<h1>大会編集画面</h1>
+
+<%= form_with model: @tournament, url: admin_tournament_path, method: :patch do |f| %>
+
+<h4>正式名称</h4>
+<%= f.text_field :tytle %>
+
+<h4>略称</h4>
+<%= f.text_field :short_tytle %>
+
+<%= f.submit '変更を保存する', class: "btn btn-success" %>
+
+<% end %>
