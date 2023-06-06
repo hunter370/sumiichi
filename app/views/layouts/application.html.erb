@@ -5,39 +5,47 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-success mb-5">
+        <div class="container">
+          <ul class="navbar-nav ml-auto">
      <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light" %>
+      </li>
+      <li class="mr-3">
+        <%= link_to "マイページ", users_show_path, class: "btn btn-light" %>
       </li>
      <% elsif admin_signed_in? %>
-      <li>
-       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light" %>
       </li>
-      <li>
-        <%= link_to "大会登録", new_admin_tournament_path, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "大会登録", new_admin_tournament_path, class: "btn btn-light" %>
       </li>
-      <li>
-        <%= link_to "大会一覧", admin_tournaments_path, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "大会一覧", admin_tournaments_path, class: "btn btn-light" %>
       </li>
      <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-light" %>
       </li>
-      <li>
-        <%= link_to "userログイン", new_user_session_path, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "userログイン", new_user_session_path, class: "btn btn-light" %>
       </li>
       <!--adminログインは最後に消す-->
-      <li>
-        <%= link_to "adminログイン", new_admin_session_path, class: "btn btn-outline-secondary" %>
+      <li class="mr-3">
+        <%= link_to "adminログイン", new_admin_session_path, class: "btn btn-light" %>
       </li>
      <% end %>
+     </ul>
+     </div>
+     </nav>
     </header>
     <%= yield %>
   </body>

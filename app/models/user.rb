@@ -3,4 +3,14 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+         
+  has_one_attached :icon
+  
+  def get_icon(width, height)
+  unless icon.attached?
+    file_path = Rails.root.join('app/assets/images/ball.png')
+    icon.attach(io: File.open(file_path), filename: 'default-icon.png', content_type: 'image/png')
+  end
+  icon.variant(resize_to_limit: [width, height]).processed
+  end
 end

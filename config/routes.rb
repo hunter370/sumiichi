@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'users/show'
+    get 'users/edit'
+  end
   scope module: :user do
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'
+    get 'users/my_page' => 'users#show', as: 'users/show'
+    get 'users/my_page/edit' => 'users#edit', as: 'users/edit'
+    patch 'users/my_page' => 'users#update', as: 'users/update'
   end
   namespace :admin do
     root to: "homes#top"

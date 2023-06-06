@@ -1,0 +1,17 @@
+<h1>マイページ</h1>
+
+<p>アイコン</p>
+<%= image_tag @user.get_icon(100,100), class: "rounded-circle" %>
+
+<p>ユーザー名</p>
+<%= @user.name %>
+
+<p>メールアドレス</p>
+<%= @user.email %>
+
+<p>自己紹介</p>
+<%= @user.introduction %>
+
+<div>
+  <%= link_to "編集する", users_edit_path, class: "btn btn-success" %>
+</div>

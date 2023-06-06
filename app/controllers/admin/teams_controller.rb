@@ -18,6 +18,6 @@ class Admin::TeamsController < ApplicationController
   
    private
   def team_params
-    params.require(:team).permit(:tournament_id, :prefecture, :team_name, :number, :grade)
+    params.require(:team).permit(:prefecture, :team_name, :number, :grade)
   end
 end
