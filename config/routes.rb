@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get 'users/my_page' => 'users#show', as: 'users/show'
     get 'users/my_page/edit' => 'users#edit', as: 'users/edit'
     patch 'users/my_page' => 'users#update', as: 'users/update'
+    get 'users/unsubscribe'
+    patch 'users/withdraw' => 'users#withdraw', as: 'users/withdraw'
   end
   namespace :admin do
     root to: "homes#top"
