@@ -1,0 +1,33 @@
+<h1>ユーザー一覧画面</h1>
+<table border="1" rules="rows">
+  <tbody>
+    <tr>
+      <th>会員ID</th>
+      <th>アイコン</th>
+      <th>ユーザー名</th>
+      <th>メールアドレス</th>
+      <th>会員ステータス</th>
+    </tr>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= image_tag user.get_icon(50,50), class: "rounded-circle" %></td>
+      <td>
+        <%= link_to admin_user_path(user.id) do %>
+        <%= user.name %>
+        <% end %>
+        </td>
+      <td><%= user.email %></td>
+      <td>
+        <% if user.is_deleted == false %>
+         <p class="text-success"><%= "有効" %></p>
+        <% else %>
+         <p class="text-danger"><%= "退会" %></p>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @users %>

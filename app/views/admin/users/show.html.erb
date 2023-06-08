@@ -1,0 +1,20 @@
+<main>
+  <div class="container">
+    <h1 class="col-md-3">ユーザー詳細画面</h1>
+
+<p>会員ID<%= @user.id %></p>
+<p>アイコン<%= image_tag @user.get_icon(100,100), class: "rounded-circle" %></p>
+<p>ユーザー名<%= @user.name %></p>
+<p>メールアドレス<%= @user.email %></p>
+<p>
+  会員ステータス
+  <% if @user.is_deleted == false %>
+    <p class="text-success"><%= "有効" %></p>
+  <% else %>
+    <p class="text-danger"><%= "退会" %></p>
+  <% end %>
+</p>
+  </div>
+  
+</main>
+

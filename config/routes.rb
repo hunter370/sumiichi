@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'users/show'
-    get 'users/edit'
-  end
+  
+
   scope module: :user do
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'
@@ -16,6 +14,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :tournaments, only: [:new, :create, :index, :edit, :update, :show]
     resources :teams, only: [:create, :index, :show, :edit, :update]
+    resources :users, only: [:index, :show]
   end
   devise_for :admins, controllers: {
   sessions:      'admins/sessions',
