@@ -1,5 +1,7 @@
-<h1>ユーザー一覧画面</h1>
-<table border="1" rules="rows">
+<main>
+  <div class="container">
+    <h1>ユーザー一覧画面</h1>
+<table class="table table-sm col-md-8" border="1" rules="rows">
   <tbody>
     <tr>
       <th>会員ID</th>
@@ -11,7 +13,7 @@
     <% @users.each do |user| %>
     <tr>
       <td><%= user.id %></td>
-      <td><%= image_tag user.get_icon(50,50), class: "rounded-circle" %></td>
+      <td><%= image_tag user.get_icon(30,30), class: "rounded-circle" %></td>
       <td>
         <%= link_to admin_user_path(user.id) do %>
         <%= user.name %>
@@ -31,3 +33,7 @@
 </table>
 
 <%= paginate @users %>
+  </div>
+  
+</main>
+
