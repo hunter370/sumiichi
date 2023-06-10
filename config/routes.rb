@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  get 'admin/tournament_teams'
   scope module: :user do
     root to: "homes#top"
     get '/about' => 'homes#about', as: 'about'

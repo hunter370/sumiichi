@@ -2,3 +2,6 @@
 <h2>(<%= @tournament.short_tytle %>)</h2>
 
 <%= link_to '出場チーム一覧へ', admin_teams_path, class: "btn btn-success" %>
+<% @teams.each do |team| %>
+  <p><%= team.team_name %></p>
+<% end %>
