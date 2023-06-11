@@ -1,2 +1,19 @@
-<h1>Admin::Teams#edit</h1>
-<p>Find me in app/views/admin/teams/edit.html.erb</p>
+<h1>チーム情報編集画面</h1>
+
+<%= form_with model: @team, url:admin_team_path(@team.id), method: :patch do |f| %>
+
+<h4>高校名</h4>
+<%= f.text_field :team_name %>
+
+<h4>都道府県名</h4>  
+<%= f.text_field :prefecture %>
+
+<h4>出場回数</h4>
+<%= f.text_field :number %>
+
+<h4>最高成績</h4>
+<%= f.text_field :grade %>
+
+<%= f.submit '変更を保存する', class: "btn btn-success" %>
+
+<% end %>

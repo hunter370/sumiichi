@@ -1,7 +1,43 @@
 <h1><%= @tournament.tytle %></h1>
 <h2>(<%= @tournament.short_tytle %>)</h2>
 
-<%= link_to '出場チーム一覧へ', admin_teams_path, class: "btn btn-success" %>
-<% @teams.each do |team| %>
-  <p><%= team.team_name %></p>
+<%= form_with model: @team, url: admin_teams_path do |f| %>
+<%= f.hidden_field :tournament_id, :value => @tournament.id %>
+
+<h2>出場チーム登録</h2>
+
+<h4>高校名</h4>
+<%= f.text_field :team_name %>
+
+<h4>都道府県名</h4>
+<%= f.text_field :prefecture %>
+
+<h4>出場回数</h4>
+<%= f.text_field :number %>
+
+<h4>最高成績</h4>
+<%= f.text_field :grade %>
+
+<%= f.submit '登録する', class: "btn btn-success" %>
+
 <% end %>
+
+<h2>出場チーム一覧</h2>
+<table border="1" style="border-collapse: collapse">
+  <tr>
+    <th>高校名</th>
+    <th>都道府県名</th>
+    <th>出場回数</th>
+    <th>最高成績</th>
+    <th></th>
+  </tr>
+ <% @teams.each do |teams| %>
+  <tr>
+    <td><%= teams.team_name %></td>
+    <td><%= teams.prefecture %></td>
+    <td><%= teams.number %></td>
+    <td><%= teams.grade %></td>
+    <td><%= link_to "編集する", edit_admin_team_path, class: "btn btn-success" %></td>
+  </tr>
+ <% end %>
+</table>
