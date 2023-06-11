@@ -1,13 +1,19 @@
-<h1>大会編集画面</h1>
+<main>
+    <div class="container">
+        <h1 class="mb-5">大会編集画面</h1>
 
 <%= form_with model: @tournament, url: admin_tournament_path, method: :patch do |f| %>
 
-<h4>正式名称</h4>
-<%= f.text_field :tytle %>
+    <h4 class="mb-3">正式名称</h4>
+<div class="mb-5"><%= f.text_field :tytle, class: "col-md-4" %></div>
 
-<h4>略称</h4>
-<%= f.text_field :short_tytle %>
+
+<h4 class="mb-3">略称</h4>
+<div class="mb-5"><%= f.text_field :short_tytle %></div>
 
 <%= f.submit '変更を保存する', class: "btn btn-success" %>
 
 <% end %>
+    </div>
+</main>
+

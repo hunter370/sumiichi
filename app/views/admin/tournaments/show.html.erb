@@ -1,28 +1,34 @@
-<h1><%= @tournament.tytle %></h1>
-<h2>(<%= @tournament.short_tytle %>)</h2>
+<main>
+  <div class="container">
+    <h1><%= @tournament.tytle %></h1>
+<h2 class="mb-5">(<%= @tournament.short_tytle %>)</h2>
 
 <%= form_with model: @team, url: admin_teams_path do |f| %>
 <%= f.hidden_field :tournament_id, :value => @tournament.id %>
 
-<h2>出場チーム登録</h2>
+<div class="row">
+  <div class="col-md-4">
+    <h2 class="mb-3">出場チーム登録</h2>
 
 <h4>高校名</h4>
-<%= f.text_field :team_name %>
+<div class="mb-3"><%= f.text_field :team_name %></div>
 
 <h4>都道府県名</h4>
-<%= f.text_field :prefecture %>
+<div class="mb-3"><%= f.text_field :prefecture %></div>
 
 <h4>出場回数</h4>
-<%= f.text_field :number %>
+<div class="mb-3"><%= f.text_field :number %></div>
 
 <h4>最高成績</h4>
-<%= f.text_field :grade %>
+<div class="mb-5"><%= f.text_field :grade %></div>
 
 <%= f.submit '登録する', class: "btn btn-success" %>
 
 <% end %>
-
-<h2>出場チーム一覧</h2>
+  </div>
+  
+<div class="col-md-8">
+  <h2 class="mb-3">出場チーム一覧</h2>
 <table border="1" style="border-collapse: collapse">
   <tr>
     <th>高校名</th>
@@ -41,3 +47,10 @@
   </tr>
  <% end %>
 </table>
+</div>
+
+</div>
+
+  </div>
+  
+</main>
