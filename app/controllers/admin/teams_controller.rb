@@ -3,7 +3,7 @@ class Admin::TeamsController < ApplicationController
     @team = Team.new
     @teams = Team.all
   end
-  
+
   def create
     @team = Team.new
     @team.prefecture = params[:prefecture]
@@ -11,7 +11,6 @@ class Admin::TeamsController < ApplicationController
     @team.number = params[:number]
     @team.grade = params[:grade]
     @team.tournament_ids = params[:tournament_id]
-    # binding.pry
     @team.save
     redirect_to admin_tournament_path(params[:tournament_id].to_i)
   end
@@ -19,13 +18,19 @@ class Admin::TeamsController < ApplicationController
   def edit
     @team = Team.find(params[:id])
   end
-  
+
   def update
-    @team = Team.find(params[:id])
+    #binding.pry
+  @team = Team.find(params[:id])
+    # @team.prefecture = params[:prefecture]
+    # @team.team_name = params[:team_name]
+    # @team.number = params[:number]
+    # @team.grade = params[:grade]
+    # @team.tournament_ids = params[:tournament_id]
     @team.update(team_params)
-    redirect_to admin_tournament_path(params[:tournament_id].to_i)
+    redirect_to admin_tournaments_path
   end
-  
+
    private
   def team_params
     params.require(:team).permit(:prefecture, :team_name, :number, :grade)
