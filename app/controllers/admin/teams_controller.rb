@@ -10,8 +10,8 @@ class Admin::TeamsController < ApplicationController
     @team.team_name = params[:team_name]
     @team.number = params[:number]
     @team.grade = params[:grade]
-    @team.tournament_ids = params[:tournament_id]
-    @team.save
+    # @team.tournament_id = params[:tournament_id]
+    @team.save!
     redirect_to admin_tournament_path(params[:tournament_id].to_i)
   end
 
@@ -33,6 +33,6 @@ class Admin::TeamsController < ApplicationController
 
    private
   def team_params
-    params.require(:team).permit(:prefecture, :team_name, :number, :grade)
+    params.require(:team).permit(:tournament_id, :prefecture, :team_name, :number, :grade)
   end
 end

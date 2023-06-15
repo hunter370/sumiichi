@@ -5,7 +5,7 @@ class Admin::TournamentsController < ApplicationController
   
   def create
     @tournament = Tournament.new(tournament_params)
-    binding.pry
+    # binding.pry
     @tournament.save
     redirect_to admin_tournaments_path
   end

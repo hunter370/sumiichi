@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2023_06_04_131947) do
   end
 
   create_table "teams", force: :cascade do |t|
+    t.integer "tournament_id", null: false
     t.string "prefecture", default: "", null: false
     t.string "team_name", default: "", null: false
     t.string "number", default: "", null: false
