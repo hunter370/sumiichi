@@ -2,7 +2,7 @@
   <div class="container">
     <h1 class="mb-5">チーム情報編集画面</h1>
 
-<%= form_with model: @team, url:admin_team_path(@team.id), method: :patch do |f| %>
+<%= form_with model: @team, url: admin_team_path, method: :patch do |f| %>
 
 <h4>高校名</h4>
 <div class="mb-3"><%= f.text_field :team_name %></div>

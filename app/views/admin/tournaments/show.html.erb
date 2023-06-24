@@ -4,7 +4,7 @@
 <h2 class="mb-5">(<%= @tournament.short_tytle %>)</h2>
 
 <%= form_with model: @team, url: admin_teams_path do |f| %>
-
+<%= f.hidden_field :tournament_id, :value => params[:id] %>
 
 <div class="row">
   <div class="col-md-4">

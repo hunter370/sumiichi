@@ -10,7 +10,8 @@ class Admin::TeamsController < ApplicationController
     @team.team_name = params[:team_name]
     @team.number = params[:number]
     @team.grade = params[:grade]
-    # @team.tournament_id = params[:tournament_id]
+    @team.tournament_id = params[:tournament_id]
+    # binding.pry
     @team.save!
     redirect_to admin_tournament_path(params[:tournament_id].to_i)
   end
