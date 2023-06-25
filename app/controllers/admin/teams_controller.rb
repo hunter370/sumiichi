@@ -21,15 +21,16 @@ class Admin::TeamsController < ApplicationController
   end
 
   def update
-    #binding.pry
+  # binding.pry
   @team = Team.find(params[:id])
+  tournament = @team.tournament.id
     # @team.prefecture = params[:prefecture]
     # @team.team_name = params[:team_name]
     # @team.number = params[:number]
     # @team.grade = params[:grade]
     # @team.tournament_ids = params[:tournament_id]
     @team.update(team_params)
-    redirect_to admin_tournaments_path
+    redirect_to admin_tournament_path(tournament)
   end
 
    private

@@ -31,6 +31,7 @@
   <h2 class="mb-3">出場チーム一覧</h2>
 <table border="1" style="border-collapse: collapse">
   <tr>
+    <th>id</th>
     <th>高校名</th>
     <th>都道府県名</th>
     <th>出場回数</th>
@@ -39,11 +40,12 @@
   </tr>
  <% @teams.each do |teams| %>
   <tr>
+    <td><%= teams.id %></td>
     <td><%= teams.team_name %></td>
     <td><%= teams.prefecture %></td>
     <td><%= teams.number %></td>
     <td><%= teams.grade %></td>
-    <td><%= link_to "編集する", edit_admin_team_path, class: "btn btn-success" %></td>
+    <td><%= link_to "編集する", edit_admin_team_path(teams.id), class: "btn btn-success" %></td>
   </tr>
  <% end %>
 </table>
