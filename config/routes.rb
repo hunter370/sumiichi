@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  
-
   get 'admin/tournament_teams'
   scope module: :user do
     root to: "homes#top"
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :tournaments, only: [:new, :create, :index, :edit, :update, :show]
     resources :teams, only: [:create, :index, :show, :edit, :update]
+    resources :games, only: [:create, :index, :show, :edit, :update]
     resources :users, only: [:index, :show]
   end
   devise_for :admins, controllers: {

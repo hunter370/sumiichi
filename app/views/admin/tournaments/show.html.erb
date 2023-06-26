@@ -52,7 +52,26 @@
 </div>
 
 </div>
-
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="mb-3">試合登録</h2>
+      <%= form_with model: @game, url: admin_games_path do |f| %>
+      <%= f.hidden_field :tournament_id, :value => params[:id] %>
+      
+      <h4>日付</h4>
+      <div class="mb-3"><%= f.text_field :date %></div>
+      
+      <h4>試合順</h4>
+      <div class="mb-3"><%= f.text_field :order %></div>
+      
+      <h4>ラウンド</h4>
+      <div class="mb-3"><%= f.text_field :round %></div>
+      
+      <%= f.submit '登録する', class: "btn btn-success" %>
+      
+      <% end %>
+      
+    </div>
   </div>
-  
+ </div>
 </main>
