@@ -4,13 +4,14 @@ class Admin::GamesController < ApplicationController
 
   def show
     @game = Game.new
+    @games = Game.all
   end
   
   def create
     @game = Game.new
     @game.tournament_id = params[:tournament_id]
     @game.date = params[:date]
-    @game.oorder = params[:order]
+    @game.order = params[:order]
     @game.round = params[:round]
     @game.score = params[:score]
     @game.save!

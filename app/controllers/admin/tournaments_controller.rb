@@ -27,6 +27,7 @@ class Admin::TournamentsController < ApplicationController
   def show
     @tournament = Tournament.find(params[:id])
     @teams = @tournament.teams
+    @games = @tournament.games
   end
   
   private
