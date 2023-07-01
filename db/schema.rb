@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_110705) do
     t.date "date", null: false
     t.string "order", null: false
     t.string "round", null: false
-    t.integer "score", null: false
+    t.string "score", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

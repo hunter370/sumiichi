@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration[6.1]
       t.date :date, null: false
       t.string :order, null: false
       t.string :round, null: false
-      t.integer :score, null: false
+      t.string :score, null: false
       t.timestamps
     end
   end

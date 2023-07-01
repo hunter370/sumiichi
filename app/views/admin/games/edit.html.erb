@@ -1,2 +1,26 @@
-<h1>Admin::Games#edit</h1>
-<p>Find me in app/views/admin/games/edit.html.erb</p>
+<h1>試合編集画面</h1>
+
+<%= form_with model: @game, url: admin_game_path, method: :patch do |f| %>
+<%= f.hidden_field :tournament_id, :value => params[:id] %>
+
+<h4>日付</h4>
+  <div class="mb-3"><%= f.date_field :date %></div>
+  
+<h4>試合順</h4>
+  <div class="mb-3"><%= f.text_field :order %></div>
+  
+<h4>ラウンド</h4>
+  <div class="mb-3"><%= f.text_field :round %></div>
+  
+<h4>一塁側</h4>
+  <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(Game.find(params[:id]).teams, :id, :team_name) %></div>
+  
+<h4>三塁側</h4>
+  <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Game.find(params[:id]).teams, :id, :team_name) %></div>
+  
+<h4>スコア</h4>
+  <div class="mb-3"><%= f.text_field :score %></div>
+  
+<%= f.submit '変更を保存する', class: "btn btn-success" %>
+  
+<% end %>
