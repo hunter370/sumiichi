@@ -8,13 +8,17 @@ class Admin::GamesController < ApplicationController
   end
   
   def create
-    @game = Game.new
-    @game.tournament_id = params[:tournament_id]
-    @game.date = params[:date]
-    @game.order = params[:order]
-    @game.round = params[:round]
-    @game.score = params[:score]
-    @game.save!
+    Game.transaction do
+      @game = Game.create!(
+        tournament_id: params[:tournament_id],
+        date: params[:date],
+        order: params[:order],
+        round: params[:round],
+        score: 0
+      )
+      GameTeam.create!(game_id: @game.id, team_id: params[:first_base_team_id])
+      GameTeam.create!(game_id: @game.id, team_id: params[:third_base_team_id])
+    end
     redirect_to admin_tournament_path(params[:tournament_id].to_i)
   end
 

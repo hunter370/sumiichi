@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2023_06_28_110705) do
   create_table "games", force: :cascade do |t|
     t.integer "tournament_id", null: false
     t.date "date", null: false
-    t.string "order", default: "", null: false
-    t.string "round", default: "", null: false
+    t.string "order", null: false
+    t.string "round", null: false
     t.integer "score", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

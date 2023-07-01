@@ -59,7 +59,7 @@
       <%= f.hidden_field :tournament_id, :value => params[:id] %>
 
       <h4>日付</h4>
-      <div class="mb-3"><%= f.text_field :date %></div>
+      <div class="mb-3"><%= f.date_field :date %></div>
 
       <h4>試合順</h4>
       <div class="mb-3"><%= f.text_field :order %></div>
@@ -68,10 +68,10 @@
       <div class="mb-3"><%= f.text_field :round %></div>
 
       <h4>一塁側</h4>
-      <div class="mb-3"><%= f.select :team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
+      <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
       
       <h4>三塁側</h4>
-      <div class="mb-3"><%= f.select :team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
+      <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
 
       <%= f.submit '登録する', class: "btn btn-success" %>
 
@@ -90,15 +90,15 @@
     <th>スコア</th>
     <th></th>
   </tr>
- <% @games.each do |games| %>
+ <% @games.each do |game| %>
   <tr>
-    <td><%= games.id %></td>
-    <td><%= games.date %></td>
-    <td><%= games.order %></td>
-    <td><%= games.round %></td>
-    <td></td>
-    <td><%= games.score %></td>
-    <td><%= link_to "編集する", edit_admin_game_path(games.id), class: "btn btn-success" %></td>
+    <td><%= game.id %></td>
+    <td><%= l game.date %></td>
+    <td><%= game.order %></td>
+    <td><%= game.round %></td>
+    <td><%= game.teams.map(&:team_name).join(' - ') %></td>
+    <td><%= game.score %></td>
+    <td><%= link_to "編集する", edit_admin_game_path(game.id), class: "btn btn-success" %></td>
   </tr>
  <% end %>
 </table>
