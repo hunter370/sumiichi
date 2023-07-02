@@ -1,7 +1,7 @@
 <h1>試合編集画面</h1>
 
 <%= form_with model: @game, url: admin_game_path, method: :patch do |f| %>
-<%= f.hidden_field :tournament_id, :value => params[:id] %>
+<%= f.hidden_field :game_id, :value => params[:id] %>
 
 <h4>日付</h4>
   <div class="mb-3"><%= f.date_field :date %></div>
@@ -13,10 +13,10 @@
   <div class="mb-3"><%= f.text_field :round %></div>
   
 <h4>一塁側</h4>
-  <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(Game.find(params[:id]).teams, :id, :team_name) %></div>
+  <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name) %></div>
   
 <h4>三塁側</h4>
-  <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Game.find(params[:id]).teams, :id, :team_name) %></div>
+  <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(@teams, :id, :team_name) %></div>
   
 <h4>スコア</h4>
   <div class="mb-3"><%= f.text_field :score %></div>

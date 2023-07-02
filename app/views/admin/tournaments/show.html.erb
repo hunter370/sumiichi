@@ -69,7 +69,7 @@
 
       <h4>一塁側</h4>
       <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
-      
+
       <h4>三塁側</h4>
       <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
 
@@ -96,7 +96,12 @@
     <td><%= l game.date %></td>
     <td><%= game.order %></td>
     <td><%= game.round %></td>
-    <td><%= game.teams.map(&:team_name).join(' - ') %></td>
+    <td>
+      <%#= game.teams.map(&:team_name).join(' - ') %>
+      <%= game.game_teams[0].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
+      -
+      <%= game.game_teams[1].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
+    </td>
     <td><%= game.score %></td>
     <td><%= link_to "編集する", edit_admin_game_path(game.id), class: "btn btn-success" %></td>
   </tr>

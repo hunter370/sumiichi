@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_110705) do
   create_table "game_teams", force: :cascade do |t|
     t.integer "team_id", null: false
     t.integer "game_id", null: false
+    t.boolean "first_base", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
