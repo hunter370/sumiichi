@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     patch 'users/my_page' => 'users#update', as: 'users/update'
     get 'users/unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'users/withdraw'
+    resources :games, only: [:index, :show]
   end
   namespace :admin do
     root to: "homes#top"

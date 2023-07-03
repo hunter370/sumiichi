@@ -21,6 +21,9 @@
       <li class="mr-3">
         <%= link_to "マイページ", users_show_path, class: "btn btn-light" %>
       </li>
+      <li class="mr-3">
+        <%= link_to "試合一覧", games_path, class: "btn btn-light" %>
+      </li>
      <% elsif admin_signed_in? %>
       <li class="mr-3">
        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-light" %>
