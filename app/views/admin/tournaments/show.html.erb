@@ -68,7 +68,10 @@
       <div class="mb-3"><%= f.text_field :round %></div>
 
       <h4>一塁側</h4>
-      <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
+      <div class="mb-3"><%#= f.select :first_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %>
+      <%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, selected:7) %>
+      </div>
+    
 
       <h4>三塁側</h4>
       <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>

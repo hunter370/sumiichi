@@ -13,9 +13,10 @@ class Admin::GamesController < ApplicationController
         date: params[:date],
         order: params[:order],
         round: params[:round],
-        score: '試合前',
-        team_ids: [params[:first_base_team_id], params[:third_base_team_id]]
+        score: '試合前'
       )
+      @game.game_teams.create(team_id: params[:first_base_team_id], first_base: true)
+      @game.game_teams.create(team_id: params[:third_base_team_id], first_base: false)
     redirect_to admin_tournament_path(params[:tournament_id].to_i)
   end
 
@@ -23,6 +24,7 @@ class Admin::GamesController < ApplicationController
     @game = Game.find(params[:id])
     @tournament = @game.tournament
     @teams = @tournament.teams
+    @team_ids = @game.game_teams.pluck(:team_id)
   end
 
   def update
