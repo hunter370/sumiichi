@@ -8,7 +8,12 @@ Rails.application.routes.draw do
     patch 'users/my_page' => 'users#update', as: 'users/update'
     get 'users/unsubscribe'
     patch 'users/withdraw' => 'users#withdraw', as: 'users/withdraw'
+    get 'games/:id/alps_first' => 'supports#alps_first', as: 'alps_first/support'
+    get 'games/:id/alps_third' => 'supports#alps_third', as: 'alps_third/support'
+    get 'games/:id/stand' => 'supports#stand', as: 'stand/support'
     resources :games, only: [:index, :show]
+    resources :tournaments, only: [:index, :show]
+    resources :supports, only: [:index, :create]
   end
   namespace :admin do
     root to: "homes#top"

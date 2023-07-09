@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_one_attached :icon
+  has_many :supports, dependent: :destroy
   
   def get_icon(width, height)
   unless icon.attached?

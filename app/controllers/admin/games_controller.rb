@@ -32,14 +32,6 @@ class Admin::GamesController < ApplicationController
     tournament = @game.tournament.id
     @game.update!(game_params)
     @gameteam = @game.game_teams
-    # binding.pry
-    # first_base = @gameteam.find_or_initialize_by(game_id: @game.id, first_base: true)
-    # first_base.team_id = params[:first_base_team_id]
-    # first_base.save!
-
-    # third_base = @gameteam.find_or_initialize_by(game_id: @game.id, first_base: false)
-    # third_base.team_id = params[:third_base_team_id]
-    # third_base.save!
 
     first_base = @gameteam.find_by(game_id: @game.id, first_base: true)
     if first_base.nil?
@@ -55,9 +47,6 @@ class Admin::GamesController < ApplicationController
       third_base.update(team_id: params[:game][:third_base_team_id])
     end
 
-
-    # @gameteam.update(game_id: @game.id, team_ids: params[:first_base_team_id])
-    # @gameteam.update(game_id: @game.id, team_ids: params[:third_base_team_id])
     redirect_to admin_tournament_path(tournament)
   end
 
