@@ -1,1 +1,15 @@
 <h1><%= @game.game_teams[1].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %>の応援ページ</h1>
+
+<%= form_with model: @support do |f| %>
+
+<%= f.hidden_field :game_id, value: @game.id %>
+<h4>コメント</h4>
+<%= f.text_field :alps_third %>
+<%= f.submit '投稿' %>
+<% end %>
+
+<% @supports.each do |support| %>
+<%= image_tag support.user.get_icon(50,50) %>
+<p><%= support.user.name %></p>
+<p><%= support.alps_third %></p>
+<% end %>

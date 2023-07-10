@@ -10,6 +10,8 @@ class User::SupportsController < ApplicationController
   
   def alps_third
     @game = Game.find(params[:id])
+    @support = Support.new
+    @supports = Support.all
   end
   
   def stand
@@ -19,9 +21,8 @@ class User::SupportsController < ApplicationController
   def create
     @support = Support.new(support_params)
     @support.user_id = current_user.id
-    
     @support.save!
-    redirect_to games_path
+     redirect_to games_path
   end
   
   private

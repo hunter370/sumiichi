@@ -9,5 +9,7 @@
 <% end %>
 
 <% @supports.each do |support| %>
+<%= image_tag support.user.get_icon(50,50) %>
+<p><%= support.user.name %></p>
 <p><%= support.alps_first %></p>
 <% end %>
