@@ -1,21 +1,7 @@
 <main>
     <div class="container">
         <div class="row mb-5">
-            <h1><%= @game.game_teams[0].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %>の応援ページ</h1>
-        </div>
-        <div class="row mb-5">
-            <table>
-                <% @supports.each do |support| %>
-                <tr>
-                    <th><%= image_tag support.user.get_icon(30,30) %></th>
-                    <th><%= support.user.name %></th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><%= support.alps_first %></td>
-                </tr>
-                <% end %>
-            </table>
+            <h1><%= @game.game_teams[0].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %>のアルプス</h1>
         </div>
         <div class="row mb-5">
             <div class="col-md-12">
@@ -26,6 +12,24 @@
                 <%= f.submit '投稿' %>
                 <% end %>
             </div>
+        </div>
+        <div class="row mb-5">
+            <table>
+                <% @supports.each do |support| %>
+                <tr>
+                    <th><%= image_tag support.user.get_icon(30,30) %></th>
+                    <th>
+                        <%= link_to users_show_path(support.user.id) do %>
+                        <%= support.user.name %>
+                        <% end %>
+                    </th>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><%= support.alps_first %></td>
+                </tr>
+                <% end %>
+            </table>
         </div>
     </div>
 </main>
