@@ -48,6 +48,9 @@
       <li class="mr-3">
         <%= link_to "adminログイン", new_admin_session_path, class: "btn btn-light" %>
       </li>
+      <li class="mr-3">
+        <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post, class: "btn btn-light" %>
+      </li>
      <% end %>
      </ul>
      </div>

@@ -30,6 +30,11 @@ class Admin::TournamentsController < ApplicationController
     @games = @tournament.games
   end
   
+  def destroy
+    @tournament = Tournament.find(params[:id])
+    @tournament.destroy
+    redirect_to admin_tournaments_path
+  end
   private
   def tournament_params
     params.require(:tournament).permit(:tytle, :short_tytle)
