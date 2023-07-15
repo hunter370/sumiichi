@@ -18,7 +18,11 @@
                 <% @supports.each do |support| %>
                 <tr>
                     <th><%= image_tag support.user.get_icon(30,30) %></th>
-                    <th><%= support.user.name %></th>
+                    <th>
+                        <%= link_to user_path(support.user.id) do %>
+                        <%= support.user.name %>
+                        <% end %>
+                    </th>
                 </tr>
                 <tr>
                     <td></td>

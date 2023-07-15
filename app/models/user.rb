@@ -6,6 +6,7 @@ class User < ApplicationRecord
          
   has_one_attached :icon
   has_many :supports, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   def get_icon(width, height)
   unless icon.attached?

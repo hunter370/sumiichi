@@ -13,24 +13,34 @@
                 <% end %>
             </div>
         </div>
-        <div class="row mb-5">
-            <table>
-                <% @supports.each do |support| %>
-                <tr>
-                    <th><%= image_tag support.user.get_icon(30,30) %></th>
-                    <th>
-                        <%= link_to users_show_path(support.user.id) do %>
-                        <%= support.user.name %>
-                        <% end %>
-                    </th>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><%= support.alps_first %></td>
-                </tr>
-                <% end %>
-            </table>
+        <% @supports.each do |support| %>
+        <div class="row mb-3">
+            <div class="col-md-2, float-right">
+                <%= image_tag support.user.get_icon(30,30) %>
+            </div>
+            <div class="col-md-8">
+                <%= link_to user_path(support.user.id) do %>
+                    <%= support.user.name %>
+                <% end %></br>
+                <%= support.alps_first %>
+            </div>
+            <div class="col-md-2">
+                 <% if support.favorited_by?(current_user) %>
+                    <p>
+                      <%= link_to support_favorites_path(support), method: :delete do %>
+                        ♥<%= support.favorites.count %> いいね
+                      <% end %>
+                    </p>
+                      <% else %>
+                    <p>
+                      <%= link_to support_favorites_path(support), method: :post do %>
+                        ♡<%= support.favorites.count %> いいね
+                      <% end %>
+                    </p>
+                 <% end %>
+            </div>
         </div>
+        <% end %>
     </div>
 </main>
 

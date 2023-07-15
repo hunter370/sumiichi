@@ -19,7 +19,7 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-light" %>
       </li>
       <li class="mr-3">
-        <%= link_to "マイページ", users_show_path, class: "btn btn-light" %>
+        <%= link_to "マイページ", user_path(current_user), class: "btn btn-light" %>
       </li>
       <li class="mr-3">
         <%= link_to "大会一覧", tournaments_path, class: "btn btn-light" %>
