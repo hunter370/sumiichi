@@ -1,7 +1,15 @@
 <main>
     <div class="container">
         <div class="row mb-5">
-            <h1><%= @game.game_teams[1].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %>のアルプス</h1>
+            <div class="col-md-8">
+             <h1><%= @game.game_teams[1].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %>のアルプス</h1>
+            </div>
+            <div class="col-md-2">
+                <%= link_to "スタンドへ", stand_support_path %>
+            </div>
+            <div class="col-md-2">
+                <%= link_to "対戦相手のアルプスへ", alps_first_support_path %>
+            </div>
         </div>
         <div class="row mb-5">
             <div class="col-md-12">
