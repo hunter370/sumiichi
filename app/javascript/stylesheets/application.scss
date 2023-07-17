@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+.jumbotron {
+  background: url('../images/stand.jpg') center no-repeat;
+  background-size: cover;
+  height: 80vh;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
