@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-      <h2 class="mb-3">試合一覧</h2>
+      <h2 class="mb-3 mt-5">観戦したい試合をクリック</h2>
       <table border="1" style="border-collapse: collapse">
   <tr>
     <th>日付</th>
@@ -10,7 +10,6 @@
     <th>ラウンド</th>
     <th>対戦チーム</th>
     <th>スコア</th>
-    <th></th>
   </tr>
  <% @games.each do |game| %>
   <tr>
@@ -22,10 +21,9 @@
       <%= game.game_teams[0].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
       -
       <%= game.game_teams[1].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
-      <% end %> 
+      <% end %>
     </td>
     <td><%= game.score %></td>
-    <td></td>
   </tr>
  <% end %>
 </table>

@@ -1,25 +1,17 @@
 <main>
   <div class="container">
-    <h1 class="mb-5">チーム情報編集画面</h1>
-
-<%= form_with model: @team, url: admin_team_path, method: :patch do |f| %>
-
-<h4>高校名</h4>
-<div class="mb-3"><%= f.text_field :team_name %></div>
-
-<h4>都道府県名</h4>  
-<div class="mb-3"><%= f.text_field :prefecture %></div>
-
-<h4>出場回数</h4>
-<div class="mb-3"><%= f.text_field :number %></div>
-
-<h4>最高成績</h4>
-<div class="mb-5"><%= f.text_field :grade %></div>
-
-<%= f.submit '変更を保存する', class: "btn btn-success" %>
-
-<% end %>
+    <h1 class="mb-5 mt-5">チーム情報編集画面</h1>
+    <%= form_with model: @team, url: admin_team_path, method: :patch do |f| %>
+      <h4>高校名</h4>
+      <div class="mb-3"><%= f.text_field :team_name %></div>
+      <h4>都道府県名</h4>  
+      <div class="mb-3"><%= f.text_field :prefecture %></div>
+      <h4>出場回数</h4>
+      <div class="mb-3"><%= f.text_field :number %></div>
+      <h4>最高成績</h4>
+      <div class="mb-5"><%= f.text_field :grade %></div>
+      <%= f.submit '変更を保存する', class: "btn btn-success" %>
+    <% end %>
   </div>
-  
 </main>
 

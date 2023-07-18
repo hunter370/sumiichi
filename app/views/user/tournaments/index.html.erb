@@ -1,6 +1,6 @@
 <main>
   <div class="container">
-    <h1>大会一覧(user)</h1>
+    <h2 class="mt-5">観戦する大会をクリック</h2>
     <% @tournaments.each do |tournament| %>
      <%= link_to tournament_path(tournament.id) do %>
       <%= tournament.tytle %>(<%= tournament.short_tytle %>)</br>

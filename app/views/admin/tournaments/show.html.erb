@@ -1,114 +1,93 @@
 <main>
-  <div class="container">
-    <h1><%= @tournament.tytle %></h1>
+ <div class="container">
+    <h1 class="mt-5"><%= @tournament.tytle %></h1>
 <h2 class="mb-5">(<%= @tournament.short_tytle %>)</h2>
-
 <%= form_with model: @team, url: admin_teams_path do |f| %>
 <%= f.hidden_field :tournament_id, :value => params[:id] %>
-
-<div class="row">
-  <div class="col-md-4">
-    <h2 class="mb-3">出場チーム登録</h2>
-
-<h4>高校名</h4>
-<div class="mb-3"><%= f.text_field :team_name %></div>
-
-<h4>都道府県名</h4>
-<div class="mb-3"><%= f.text_field :prefecture %></div>
-
-<h4>出場回数</h4>
-<div class="mb-3"><%= f.text_field :number %></div>
-
-<h4>最高成績</h4>
-<div class="mb-5"><%= f.text_field :grade %></div>
-
-<%= f.submit '登録する', class: "btn btn-success" %>
-
+  <div class="row">
+    <div class="col-md-4">
+      <h2 class="mb-3">出場チーム登録</h2>
+      <h4>高校名</h4>
+      <div class="mb-3"><%= f.text_field :team_name %></div>
+      <h4>都道府県名</h4>
+      <div class="mb-3"><%= f.text_field :prefecture %></div>
+      <h4>出場回数</h4>
+      <div class="mb-3"><%= f.text_field :number %></div>
+      <h4>最高成績</h4>
+      <div class="mb-5"><%= f.text_field :grade %></div>
+      <%= f.submit '登録する', class: "btn btn-success" %>
+    </div>
 <% end %>
+    <div class="col-md-8 mb-5">
+      <h2 class="mb-3">出場チーム一覧</h2>
+      <table border="1" style="border-collapse: collapse">
+        <tr>
+          <th>id</th>
+          <th>高校名</th>
+          <th>都道府県名</th>
+          <th>出場回数</th>
+          <th>最高成績</th>
+          <th></th>
+        </tr>
+       <% @teams.each do |teams| %>
+        <tr>
+          <td><%= teams.id %></td>
+          <td><%= teams.team_name %></td>
+          <td><%= teams.prefecture %></td>
+          <td><%= teams.number %></td>
+          <td><%= teams.grade %></td>
+          <td><%= link_to "編集する", edit_admin_team_path(teams.id), class: "btn btn-success" %></td>
+        </tr>
+       <% end %>
+      </table>
+    </div>
   </div>
-
-<div class="col-md-8 mb-5">
-  <h2 class="mb-3">出場チーム一覧</h2>
-<table border="1" style="border-collapse: collapse">
-  <tr>
-    <th>id</th>
-    <th>高校名</th>
-    <th>都道府県名</th>
-    <th>出場回数</th>
-    <th>最高成績</th>
-    <th></th>
-  </tr>
- <% @teams.each do |teams| %>
-  <tr>
-    <td><%= teams.id %></td>
-    <td><%= teams.team_name %></td>
-    <td><%= teams.prefecture %></td>
-    <td><%= teams.number %></td>
-    <td><%= teams.grade %></td>
-    <td><%= link_to "編集する", edit_admin_team_path(teams.id), class: "btn btn-success" %></td>
-  </tr>
- <% end %>
-</table>
-</div>
-
-</div>
   <div class="row">
     <div class="col-md-4">
       <h2 class="mb-3">試合登録</h2>
       <%= form_with model: @game, url: admin_games_path do |f| %>
       <%= f.hidden_field :tournament_id, :value => params[:id] %>
-
       <h4>日付</h4>
       <div class="mb-3"><%= f.date_field :date %></div>
-
       <h4>試合順</h4>
       <div class="mb-3"><%= f.text_field :order %></div>
-
       <h4>ラウンド</h4>
       <div class="mb-3"><%= f.text_field :round %></div>
-
       <h4>一塁側</h4>
-      <div class="mb-3"><%#= f.select :first_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %>
-      <%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, selected:7) %>
-      </div>
-    
-
+      <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, selected:7) %></div>
       <h4>三塁側</h4>
       <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(Tournament.find(params[:id]).teams, :id, :team_name) %></div>
-
       <%= f.submit '登録する', class: "btn btn-success" %>
-
       <% end %>
-
     </div>
     <div class="col-md-8">
       <h2 class="mb-3">試合一覧</h2>
       <table border="1" style="border-collapse: collapse">
-  <tr>
-    <th>id</th>
-    <th>日付</th>
-    <th>試合順</th>
-    <th>ラウンド</th>
-    <th>対戦チーム</th>
-    <th>スコア</th>
-    <th></th>
-  </tr>
- <% @games.each do |game| %>
-  <tr>
-    <td><%= game.id %></td>
-    <td><%= l game.date %></td>
-    <td><%= game.order %></td>
-    <td><%= game.round %></td>
-    <td>
-      <%= game.game_teams[0].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
-      -
-      <%= game.game_teams[1].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
-    </td>
-    <td><%= game.score %></td>
-    <td><%= link_to "編集する", edit_admin_game_path(game.id), class: "btn btn-success" %></td>
-  </tr>
- <% end %>
-</table>
+        <tr>
+          <th>id</th>
+          <th>日付</th>
+          <th>試合順</th>
+          <th>ラウンド</th>
+          <th>対戦チーム</th>
+          <th>スコア</th>
+          <th></th>
+        </tr>
+        <% @games.each do |game| %>
+        <tr>
+          <td><%= game.id %></td>
+          <td><%= l game.date %></td>
+          <td><%= game.order %></td>
+          <td><%= game.round %></td>
+          <td>
+            <%= game.game_teams[0].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
+            -
+            <%= game.game_teams[1].first_base ? game.teams[0].team_name : game.teams[1].team_name %>
+          </td>
+          <td><%= game.score %></td>
+          <td><%= link_to "編集する", edit_admin_game_path(game.id), class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+      </table>
     </div>
   </div>
  </div>

@@ -1,26 +1,22 @@
-<h1>試合編集画面</h1>
+<main>
+  <div class="container">
+    <h1 class="mt-5">試合編集画面</h1>
+    <%= form_with model: @game, url: admin_game_path, method: :patch do |f| %>
+      <%= f.hidden_field :game_id, :value => params[:id] %>
+      <h4>日付</h4>
+      <div class="mb-3"><%= f.date_field :date %></div>
+      <h4>試合順</h4>
+      <div class="mb-3"><%= f.text_field :order %></div>
+      <h4>ラウンド</h4>
+      <div class="mb-3"><%= f.text_field :round %></div>
+      <h4>一塁側</h4>
+      <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, @team_ids[0]) %></div>
+      <h4>三塁側</h4>
+      <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, @team_ids[1]) %></div>
+      <h4>スコア</h4>
+      <div class="mb-3"><%= f.text_field :score %></div>
+      <%= f.submit '変更を保存する', class: "btn btn-success" %>
+    <% end %>
+  </div>
+</main>
 
-<%= form_with model: @game, url: admin_game_path, method: :patch do |f| %>
-<%= f.hidden_field :game_id, :value => params[:id] %>
-
-<h4>日付</h4>
-  <div class="mb-3"><%= f.date_field :date %></div>
-
-<h4>試合順</h4>
-  <div class="mb-3"><%= f.text_field :order %></div>
-
-<h4>ラウンド</h4>
-  <div class="mb-3"><%= f.text_field :round %></div>
-
-<h4>一塁側</h4>
-  <div class="mb-3"><%= f.select :first_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, @team_ids[0]) %></div>
-
-<h4>三塁側</h4>
-  <div class="mb-3"><%= f.select :third_base_team_id, options_from_collection_for_select(@teams, :id, :team_name, @team_ids[1]) %></div>
-
-<h4>スコア</h4>
-  <div class="mb-3"><%= f.text_field :score %></div>
-
-<%= f.submit '変更を保存する', class: "btn btn-success" %>
-
-<% end %>

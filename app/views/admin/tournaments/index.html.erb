@@ -1,22 +1,22 @@
 <main>
   <div class="container">
-    <h1>大会一覧画面</h1>
-<table border="1" style="border-collapse: collapse">
-  <tr>
-    <th>正式名称</th>
-    <th>略称</th>
-    <th></th>
-    <th></th>
-  </tr>
- <% @tournaments.each do |tournament| %>
-  <tr>
-    <td><%= tournament.tytle %></td>
-    <td><%= tournament.short_tytle %></td>
-    <td><%= link_to "編集する", edit_admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
-    <td><%= link_to "詳細へ", admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
-    <td><%= link_to "削除する", admin_tournament_path(tournament.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
-  </tr>
- <% end %>
-</table>
+    <h1 class="mt-5">大会一覧画面</h1>
+    <table border="1" style="border-collapse: collapse">
+      <tr>
+        <th>正式名称</th>
+        <th>略称</th>
+        <th></th>
+        <th></th>
+      </tr>
+     <% @tournaments.each do |tournament| %>
+      <tr>
+        <td><%= tournament.tytle %></td>
+        <td><%= tournament.short_tytle %></td>
+        <td><%= link_to "編集する", edit_admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
+        <td><%= link_to "詳細へ", admin_tournament_path(tournament.id), class: "btn btn-success" %></td>
+        <td><%= link_to "削除する", admin_tournament_path(tournament.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %></td>
+      </tr>
+     <% end %>
+    </table>
   </div>
 </main>

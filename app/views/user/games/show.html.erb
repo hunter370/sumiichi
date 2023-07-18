@@ -1,22 +1,21 @@
 <main>
   <div class="container">
     <div class="row">
-      <h1><%= l @game.date %></h1>
-      <h1><%= @game.order %></h1>
+      <h1 class="mt-5"><%= l @game.date %><%= @game.order %></h1>
     </div>
     <h1 class="row"><%= @game.round %></h1>
     <div class="row">
       <div class="col-md-4">
-        <h2><%= @game.game_teams[0].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %></br></h2>
+        <h2><%= @game.game_teams[0].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %></br></h2><p>(一塁側)</p>
         <h4>
           (<%= @game.game_teams[0].first_base ? @game.teams[0].prefecture : @game.teams[1].prefecture %>)</br>
           <%= @game.game_teams[0].first_base ? @game.teams[0].number : @game.teams[1].number %></br>
           最高成績:<%= @game.game_teams[0].first_base ? @game.teams[0].grade : @game.teams[1].grade %>
         <h4>
       </div>
-      <h2 class="col-md-4"><%= @game.score%></h2>
+      <h2 class="col-md-4"></h2>
       <div class="col-md-4">
-        <h2><%= @game.game_teams[1].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %></br></h2>
+        <h2><%= @game.game_teams[1].first_base ? @game.teams[0].team_name : @game.teams[1].team_name %></br></h2><p>(三塁側)</p>
         <h4>
           (<%= @game.game_teams[1].first_base ? @game.teams[0].prefecture : @game.teams[1].prefecture %>)</br>
           <%= @game.game_teams[1].first_base ? @game.teams[0].number : @game.teams[1].number %></br>
@@ -29,7 +28,7 @@
       <div class="col-md-4"><%= link_to "スタンドへ", stand_support_path, class: "btn btn-success" %></div>
       <div class="col-md-4"><%= link_to "三塁側アルプスへ", alps_third_support_path, class: "btn btn-success" %></div>
     </div>
-    
+
   </div>
 </main>
 
