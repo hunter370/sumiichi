@@ -30,9 +30,7 @@
                   <%= link_to "ユーザー一覧", admin_users_path, class: "nav-item nav-link mr-2" %>
                 <% else %>
                   <%= link_to "新規登録", new_user_registration_path, class: "nav-item nav-link mr-2t" %>
-                  <%= link_to "userログイン", new_user_session_path, class: "nav-item nav-link mr-2t" %>
-                  <!--adminログインは最後に消す-->
-                  <%= link_to "adminログイン", new_admin_session_path, class: "nav-item nav-link mr-2" %>
+                  <%= link_to "ログイン", new_user_session_path, class: "nav-item nav-link mr-2t" %>
                   <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, method: :post, class: "nav-item nav-link mr-2" %>
                 <% end %>
               </div>

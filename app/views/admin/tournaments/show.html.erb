@@ -5,6 +5,7 @@
 <%= form_with model: @team, url: admin_teams_path do |f| %>
 <%= f.hidden_field :tournament_id, :value => params[:id] %>
   <div class="row">
+    <!--チーム登録-->
     <div class="col-md-4">
       <h2 class="mb-3">出場チーム登録</h2>
       <h4>高校名</h4>
@@ -17,7 +18,8 @@
       <div class="mb-5"><%= f.text_field :grade %></div>
       <%= f.submit '登録する', class: "btn btn-success" %>
     </div>
-<% end %>
+    <% end %>
+    <!--チーム一覧-->
     <div class="col-md-8 mb-5">
       <h2 class="mb-3">出場チーム一覧</h2>
       <table border="1" style="border-collapse: collapse">
@@ -43,6 +45,7 @@
     </div>
   </div>
   <div class="row">
+    <!--試合登録-->
     <div class="col-md-4">
       <h2 class="mb-3">試合登録</h2>
       <%= form_with model: @game, url: admin_games_path do |f| %>
@@ -60,6 +63,7 @@
       <%= f.submit '登録する', class: "btn btn-success" %>
       <% end %>
     </div>
+    <!--試合一覧-->
     <div class="col-md-8">
       <h2 class="mb-3">試合一覧</h2>
       <table border="1" style="border-collapse: collapse">
