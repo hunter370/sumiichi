@@ -1,7 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
 .jumbotron {
-  background: url('../images/stand.jpg') center no-repeat;
+  background: image-url('../images/stand.jpg') center no-repeat;
   background-size: cover;
   height: 100vh;
   color: white;
