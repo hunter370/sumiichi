@@ -1,24 +1,19 @@
-# README
+# Sumiichi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+利用者各々がテレビ等で高校野球の観戦をしながらコメントし合えるコミュニティサイトです。
 
-Things you may want to cover:
+### テーマを選んだ理由
+試合の観戦を通して気の合う仲間を見つけ、観戦をより楽しむことを目的としています。<br>
+SNSは不特定多数に向けてメッセージを発信することはできても特定の人との仲を深めることは難しいです。<br>
+しかし、コミュニティサイトであれば応援するチームが同じ人や、同郷の人のように、<br>
+交流する相手を選ぶことができ、観戦の楽しみを増やすことができます。
 
-* Ruby version
+### ターゲットユーザー
+* 高校野球観戦ファン
+* 高校野球ファン同士で繋がりたい人
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 主な利用シーン
+* 試合観戦中にコメントしたいとき
+* 試合結果についてコメントしたいとき
